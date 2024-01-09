@@ -233,3 +233,47 @@ total_price = product_prices.reduce(:+)
 #We can also reduce hashes, by first grabbing only the values:
 toys_and_prices = { lego: 120.30, doll: 30.23, catan: 40.55 }
 total_price = toys_and_prices.values.reduce(:+)
+
+
+#Scope
+#Scope and Methods
+
+# How many legs are there in total if we have
+# 'creature_count' number of 'creature's?
+def leg_count creature, creature_count
+  if creature == 'human'
+    legs = 2 * creature_count
+  elsif creature == 'spider'
+    legs = 8 * creature_count
+  else
+    legs = 4 * creature_count
+  end
+  "#{legs} #{creature} legs in total."
+end
+puts leg_count 'spider', 4
+puts legs # This variable should not be available in the current scope.
+#output:
+#32 spider legs in total.
+#NameError:undefined local variable or method `legs' for main:Object (NameError)
+
+
+#Scope and Blocks
+#Block parameters (like fruit in do |fruit|) are always local to the block. Even if there's an existing variable with the same name outside the block, the block parameter will create a new, separate scope.
+fruit = 'dragon fruit' # The fruit variable *will not* be overwritten by the loop.
+double_fruit = fruit * 2 # The double_fruit variable *will* be overwritten by the loop.
+['apple','pear','banana'].each do |fruit| # Creates a second fruit variable with a separate scope.
+double_fruit = fruit * 2 # double_fruit refers to the variable defined above the block.
+puts "I ate one #{fruit}. Doubled: #{double_fruit}"
+end
+puts "It's true I ate one #{fruit}." # Still 'dragon fruit'
+puts "But the double fruit is #{double_fruit}!" # 'bananabanana'
+#Output:
+#I ate one apple. Doubled: appleapple
+#I ate one pear. Doubled: pearpear
+# I ate one banana. Doubled: bananabanana
+# It's true I ate one dragon fruit.
+# But the double fruit is bananabanana!
+
+
+
+
