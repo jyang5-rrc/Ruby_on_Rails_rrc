@@ -197,4 +197,39 @@ ghost_dictionary = { 'Blinky' => 'Shadow',
 ghost_dictionary.each do | nickname, character |
 puts "#{nickname} also know as #{character}."
 end
+#Output:
+#Blinky also know as Shadow.
+#Pinky also know as Speedy.
+#Inky also know as Bashful.
+#Clyde also know as Pokey.
 
+
+#A Map is a Conversion Loop
+secrets = ["eht", "tsohg", "lliw", "ekirts", "ta", "thgindim"]
+decoded = secrets.map { |word| word.reverse }#reverse is a method of string of ruby
+# decoded equals:["the", "ghost", "will", "strike", "at", "midnight"]
+#*Map takes a block, passes each array element into that block, and produces a second array based on the block’s return value.
+
+COMBINED_TAX_RATE = 0.11 # 11%
+product_prices = [12.34, 839.00, 90.95, 100]
+product_taxes = product_prices.map { |price| price * COMBINED_TAX_RATE }
+# product_taxes equals: [1.3574, 92.29, 10.0045, 11.0]
+
+#We Can Reduce Collections Too
+#Sometimes we want to reduce a collection down to a single value:
+product_prices = [12.34, 839.00, 90.95, 100]
+total_price = product_prices.sum
+max_price = product_prices.max
+min_price = product_prices.min
+
+#The reduce method lets us write customer reducers. Here’s sum rewritten as a reduce :
+product_prices = [12.34, 839.00, 90.95, 100]
+total_price = product_prices.reduce(0) { |sum, price| sum + price }
+#reduce is a method in Ruby that is used to accumulate a value across the elements of an array. It takes an initial value and a block. The initial value here is 0.
+#The block { |sum, price| sum + price } takes two parameters - sum and price. For each element in the product_prices array, the block is executed, adding the current element (price) to the accumulator (sum).
+# If your reduce block involves a single operator like this it can be refactored to:
+total_price = product_prices.reduce(:+)
+
+#We can also reduce hashes, by first grabbing only the values:
+toys_and_prices = { lego: 120.30, doll: 30.23, catan: 40.55 }
+total_price = toys_and_prices.values.reduce(:+)
