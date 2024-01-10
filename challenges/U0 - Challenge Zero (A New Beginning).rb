@@ -38,6 +38,8 @@ description: Ultimate Challenge Zero
 # float_number = input.to_f
 # puts "The float value is #{float_number}"
 
+#update :
+
 GST_RATE = 0.05
 PST_RATE = 0.07
 
