@@ -2,6 +2,7 @@
 challenge: U0 - Challenge Zero (A New Beginning)
 creater: @Jiajia Yang
 data: 2024-01-09
+update: 2024-01-16
 description: Ultimate Challenge Zero
 =end
 
@@ -54,9 +55,19 @@ def sub_total input_number
   grand_total = sub_total * (1 + GST_RATE + PST_RATE)
   puts "Grand Total: $#{'%.2f' % grand_total}" # 5.00 * (1 + 0.05 + 0.07) = 5.00 * 1.12 = 5.60
 
-  if grand_total <= 5.00
+  # if grand_total <= 5.00
+  #   puts "Pocket Change"
+  # elsif grand_total > 5.00 && grand_total < 20.00
+  #   puts "Wallet Time"
+  # else
+  #   puts "Charge It!"
+  # end
+
+  # case statement
+  case grand_total
+  when 0..5
     puts "Pocket Change"
-  elsif grand_total > 5.00 && grand_total < 20.00
+  when 5..20
     puts "Wallet Time"
   else
     puts "Charge It!"
