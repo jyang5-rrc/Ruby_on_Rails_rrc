@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/stympy/faker.git
+  revision: b0ab11d93dd09c513a1009a28325ff6efdddf9a2
+  branch: main
+  specs:
+    faker (3.2.3)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -39,6 +47,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  faker!
   rake
   sqlite3
 
